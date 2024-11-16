@@ -1,0 +1,105 @@
+# ---------------------------
+# Site 基本信息
+# ---------------------------
+title: Hexo # 网站标题
+subtitle: '' # 网站副标题
+description: '' # 网站描述，用于 SEO
+keywords: '' # 网站关键字，用于 SEO，多个关键字用逗号分隔
+author: John Doe # 作者名称
+language: en # 网站语言
+timezone: '' # 网站时区，留空时默认使用系统时间
+
+# ---------------------------
+# Extensions 主题扩展
+# ---------------------------
+theme: anzhiyu # 使用的 Hexo 主题
+
+# ---------------------------
+# URL 配置
+# ---------------------------
+url: https://elysia.cloud-ip.biz/ # 网站根 URL
+permalink: :year/:month/:day/:title/ # 文章固定链接格式
+permalink_defaults: # 固定链接默认值
+pretty_urls:
+  trailing_index: true # 是否在 URL 末尾添加 index.html
+  trailing_html: true # 是否在 URL 末尾保留 .html 后缀
+
+# ---------------------------
+# Directory 目录设置
+# ---------------------------
+source_dir: source # 源文件目录
+public_dir: public # 生成的静态文件目录
+tag_dir: tags # 标签文件目录
+archive_dir: archives # 归档文件目录
+category_dir: categories # 分类文件目录
+code_dir: downloads/code # 下载代码的默认目录
+i18n_dir: :lang # 国际化文件目录
+skip_render: # 不渲染的文件或目录，支持通配符
+
+# ---------------------------
+# Writing 写作设置
+# ---------------------------
+new_post_name: :title.md # 新文章文件的命名规则
+default_layout: post # 新文章的默认布局
+titlecase: false # 标题是否首字母大写
+external_link:
+  enable: true # 是否为外部链接添加跳转
+  field: site # 链接作用范围，默认是整个网站
+  exclude: '' # 排除的外部链接
+filename_case: 0 # 文件名的大小写，0 为不更改，1 为小写，2 为大写
+render_drafts: false # 是否渲染草稿
+post_asset_folder: false # 是否为文章创建独立的资源文件夹
+relative_link: false # 是否使用相对链接
+future: true # 是否发布未来日期的文章
+syntax_highlighter: highlight.js # 使用的代码高亮器
+highlight: # highlight.js 配置
+  line_number: true # 是否显示行号
+  auto_detect: false # 是否自动检测代码语言
+  tab_replace: '' # 用空格替代 tab
+  wrap: true # 是否自动换行
+  hljs: false # 是否启用 highlight.js 风格
+prismjs: # Prism.js 配置
+  preprocess: true # 是否预处理代码
+  line_number: true # 是否显示行号
+  tab_replace: '' # 用空格替代 tab
+
+# ---------------------------
+# Home page setting 首页设置
+# ---------------------------
+index_generator:
+  path: '' # 首页路径
+  per_page: 10 # 每页文章数
+  order_by: -date # 排序规则，按日期降序排列
+
+# ---------------------------
+# Category & Tag 分类与标签
+# ---------------------------
+default_category: uncategorized # 默认分类
+category_map: # 分类映射
+tag_map: # 标签映射
+
+# ---------------------------
+# Metadata elements 元数据元素
+# ---------------------------
+meta_generator: true # 是否启用生成器元数据
+
+# ---------------------------
+# Date / Time format 日期时间格式
+# ---------------------------
+date_format: YYYY-MM-DD # 日期格式
+time_format: HH:mm:ss # 时间格式
+updated_option: 'mtime' # 文章更新时间选项，mtime 为文件修改时间
+
+# ---------------------------
+# Pagination 分页设置
+# ---------------------------
+per_page: 10 # 每页文章数
+pagination_dir: page # 分页目录名
+
+# ---------------------------
+# Deployment 部署设置
+# ---------------------------
+deploy:
+  type: git # 部署类型
+  repo: git@github.com:Jyf0214/hexo-theme-solitude.git # 部署的 Git 仓库地址
+  branch: gh-pages # 部署分支
