@@ -109,7 +109,7 @@ docsearch:
 
 # Local search
 local_search:
-  enable: true
+  enable: false
   preload: true
   CDN:
 
@@ -161,7 +161,7 @@ cover:
   position: left
   # When cover is not set, the default cover is displayed (当没有设置cover时，默认的封面显示)
   default_cover:
-    # - /img/default_cover.jpg
+      - /img/default_cover.jpg
 
 # Replace Broken Images (替换无法显示的图片)
 error_img:
@@ -170,7 +170,7 @@ error_img:
 
 # A simple 404 page
 error_404:
-  enable: true
+  enable: false
   subtitle: "请尝试站内搜索寻找文章"
   background: https://bu.dusays.com/2023/05/08/645907596997d.gif
 
@@ -200,7 +200,7 @@ mainTone:
 # wordcount (字数统计)
 # see https://blog.anheyu.com/posts/c27d.html#字数统计
 wordcount:
-  enable: false
+  enable: true
   post_wordcount: true
   min2read: true
   total_wordcount: true
