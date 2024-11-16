@@ -44,17 +44,21 @@ jobs:
       - name: Generate static files
         run: hexo generate
 
-      # Step 5: 添加 CNAME 文件
+      # Step 5: 生成图片文件
+      - name: Generate static files
+        run: cp -r themes/anzhiyu/source/img/siteicon/*.{svg,jpg,png,gif} public/img/
+
+      # Step 6: 添加 CNAME 文件
       - name: Create CNAME file
         run: echo "amiya.giize.com" > public/CNAME
 
-      # Step 6: 上传生成的静态文件作为构建产物
+      # Step 7: 上传生成的静态文件作为构建产物
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: public # 只上传 Hexo 生成的静态文件
 
-      # Step 7: 部署到 GitHub Pages
+      # Step 8: 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
