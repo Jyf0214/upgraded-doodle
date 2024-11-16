@@ -17,7 +17,7 @@ theme: anzhiyu # 使用的 Hexo 主题
 # ---------------------------
 # URL 配置
 # ---------------------------
-url: https://elysia.cloud-ip.biz/ # 网站根 URL
+url: https://amiya.giize.com/ # 网站根 URL
 permalink: :year/:month/:day/:title/ # 文章固定链接格式
 permalink_defaults: # 固定链接默认值
 pretty_urls:
