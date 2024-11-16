@@ -41,7 +41,7 @@ skip_render: # 不渲染的文件或目录，支持通配符
 # ---------------------------
 new_post_name: :title.md # 新文章文件的命名规则
 default_layout: post # 新文章的默认布局
-titlecase: false # 标题是否首字母大写
+titlecase: true # 标题是否首字母大写
 external_link:
   enable: true # 是否为外部链接添加跳转
   field: site # 链接作用范围，默认是整个网站
