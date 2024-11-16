@@ -16,7 +16,7 @@ hexo.extend.filter.register(
       social: null,
       favicon: "/favicon.ico",
       avatar: {
-        img: "https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg",
+        img: "https://amiya.giize.com/img/logo.svg",
         effect: false,
       },
       disable_top_img: false,
@@ -213,7 +213,7 @@ hexo.extend.filter.register(
         card_weixin: {
           enable: true,
           face: "https://bu.dusays.com/2023/01/13/63c02edf44033.png",
-          backFace: "https://bu.dusays.com/2023/05/13/645fa415e8694.png",
+          backFace: "",
         },
         card_recent_post: {
           enable: true,
