@@ -139,7 +139,7 @@ favicon: /favicon.ico
 
 # Avatar (头像)
 avatar:
-  img: https://bu.dusays.com/2023/04/27/64496e511b09c.jpg
+  img: https://amiya.giize.com/img/logo.svg
   effect: false
 
 # Disable all banner image
@@ -545,7 +545,7 @@ footer:
       loop: true
       # source 调用第三方服务
       # source: false 关闭调用
-      # source: 1  调用一言网的一句话（简体） https://hitokoto.cn/
+        source: 1   
       # source: 2  调用一句网（简体） http://yijuzhan.com/
       # source: 3  调用今日诗词（简体） https://www.jinrishici.com/
       # subtitle 会先显示 source , 再显示 sub 的内容
