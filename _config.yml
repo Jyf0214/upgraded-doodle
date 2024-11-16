@@ -1,12 +1,12 @@
 # ---------------------------
 # Site 基本信息
 # ---------------------------
-title: Hexo # 网站标题
+title: Jyf0214 # 网站标题
 subtitle: '' # 网站副标题
 description: '' # 网站描述，用于 SEO
 keywords: '' # 网站关键字，用于 SEO，多个关键字用逗号分隔
 author: John Doe # 作者名称
-language: ZH_cn # 网站语言
+language: zh_CN # 网站语言
 timezone: '' # 网站时区，留空时默认使用系统时间
 
 # ---------------------------
@@ -21,8 +21,8 @@ url: https://elysia.cloud-ip.biz/ # 网站根 URL
 permalink: :year/:month/:day/:title/ # 文章固定链接格式
 permalink_defaults: # 固定链接默认值
 pretty_urls:
-  trailing_index: true # 是否在 URL 末尾添加 index.html
-  trailing_html: true # 是否在 URL 末尾保留 .html 后缀
+  trailing_index: false # 是否在 URL 末尾添加 index.html
+  trailing_html: false # 是否在 URL 末尾保留 .html 后缀
 
 # ---------------------------
 # Directory 目录设置
@@ -101,5 +101,5 @@ pagination_dir: page # 分页目录名
 # ---------------------------
 deploy:
   type: git # 部署类型
-  repo: git@github.com:Jyf0214/hexo-theme-solitude.git # 部署的 Git 仓库地址
+  repo: git@github.com:Jyf0214/hexo-theme-solitude.git 
   branch: gh-pages # 部署分支
