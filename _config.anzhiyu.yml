@@ -40,7 +40,7 @@ nav:
 # mourn （哀悼日，指定日期网站简单变灰，不包括滚动条）
 # 注意： 仅网站首页变灰，其他页面正常显示
 mourn:
-  enable: true
+  enable: false
   days: [4-5, 5-12, 7-7, 9-18, 12-13]
 
 # Code Blocks (代码相关)
@@ -66,7 +66,8 @@ copy:
 # formal:
 #   name: link || icon
 social:
-  Github: https://github.com/Jyf0214
+  # Github: https://github.com/anzhiyu-c || anzhiyu-icon-github
+  # BiliBili: https://space.bilibili.com/372204786 || anzhiyu-icon-bilibili
 
 # 作者卡片 状态
 author_status:
@@ -82,6 +83,10 @@ author_status:
     # - 🏃 脚踏实地行动派
     # - 🧱 团队小组发动机
     # - 💢 壮汉人狠话不多
+
+# search (搜索)
+# see https://blog.anheyu.com/posts/c27d.html#搜索系统
+# --------------------------------------
 
 # Algolia search
 algolia_search:
@@ -118,12 +123,12 @@ local_search:
 
 # MathJax
 mathjax:
-  enable: true
+  enable: false
   per_page: false
 
 # KaTeX
 katex:
-  enable: true
+  enable: false
   per_page: false
   hide_scrollbar: true
 
@@ -229,10 +234,10 @@ post_copyright:
   enable: true
   decode: false
   author_href:
-  location: 中国
+  location: 长沙
   license: CC BY-NC-SA 4.0
   license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
-  avatarSinks: true # hover时头像下沉
+  avatarSinks: false # hover时头像下沉
   copyright_author_img_back:
   copyright_author_img_front:
   copyright_author_link: /
@@ -241,10 +246,10 @@ post_copyright:
 reward:
   enable: true
   QR_code:
-    - img: 
+    - img: https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png
       link:
       text: 微信
-    - img: 
+    - img: https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png
       link:
       text: 支付宝
 
@@ -426,9 +431,9 @@ footer:
   custom_text:
   runtime:
     enable: false
-    launch_time: 16/11/2024 15:00:00 # 网站上线时间
-    work_img:
-    work_description: 
+    launch_time: 04/01/2021 00:00:00 # 网站上线时间
+    work_img: https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-上班摸鱼中.svg
+    work_description: 距离月入25k也就还差一个大佬带我~
     offduty_img: https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-下班啦.svg
     offduty_description: 下班了就该开开心心的玩耍，嘿嘿~
   # 徽标部分配置项 https://shields.io/
@@ -441,7 +446,7 @@ footer:
         message: 博客框架为Hexo_v5.4.0 #徽标提示语
       - link: https://blog.anheyu.com/
         shields: https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg
-        message: 
+        message: 本站使用AnZhiYu主题
       # - link: https://www.dogecloud.com/
       #   shields: https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/CDN-多吉云-3693F3.svg
       #   message: 本站使用多吉云为静态资源提供CDN加速
@@ -855,7 +860,7 @@ busuanzi:
 # Formal: Month/Day/Year Time or Year/Month/Day Time
 runtimeshow:
   enable: true
-  publish_date: 16/11/2024 15:00:00
+  publish_date: 4/1/2021 00:00:00
 
 # Console - Newest Comments
 newest_comments:
