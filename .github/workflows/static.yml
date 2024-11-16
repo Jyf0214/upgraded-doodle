@@ -45,7 +45,7 @@ jobs:
         run: hexo generate
 
       # Step 5: 生成图片文件
-      - name: Generate static files
+      - name: Generate Img files
         run: cp -r themes/anzhiyu/source/img/siteicon/*.{svg,png} public/img/
 
       # Step 6: 添加 CNAME 文件
