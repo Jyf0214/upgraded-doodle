@@ -140,7 +140,7 @@ favicon: /favicon.ico
 # Avatar (头像)
 avatar:
   img: https://amiya.giize.com/img/logo.svg
-  effect: false
+  effect: true
 
 # Disable all banner image
 disable_top_img: false
