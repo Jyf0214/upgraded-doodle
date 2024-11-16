@@ -46,7 +46,7 @@ jobs:
 
       # Step 5: 生成图片文件
       - name: Generate static files
-        run: cp -r themes/anzhiyu/source/img/siteicon/*.{svg,jpg,png,gif} public/img/
+        run: cp -r themes/anzhiyu/source/img/siteicon/*.{svg,png} public/img/
 
       # Step 6: 添加 CNAME 文件
       - name: Create CNAME file
