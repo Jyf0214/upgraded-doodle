@@ -570,7 +570,7 @@ cnzz_analytics:
 
 # Cloudflare Analytics
 # https://www.cloudflare.com/zh-tw/web-analytics/
-cloudflare_analytics:<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "53782c5878e545659c75fc6f27437ff3"}'></script><!-- End Cloudflare Web Analytics -->
+cloudflare_analytics: <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "53782c5878e545659c75fc6f27437ff3"}'></script><!-- End Cloudflare Web Analytics -->
 
 # Microsoft Clarity
 # https://clarity.microsoft.com/
