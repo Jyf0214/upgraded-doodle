@@ -375,17 +375,17 @@ artalk:
 # giscus
 # https://giscus.app/
 giscus:
-  repo: # GitHub repository name
+  repo: Jyf0214/upgraded-doodle
   repo_id: # GitHub repository id
-  category_id: # GitHub repository category id
+  category_id: R_kgDONQJ1fQ
   theme:
     light: light
     dark: dark
   option: # options
     data-lang: zh-CN
-    data-mapping:
-    data-category:
-    data-input-position:
+    data-mapping: pathname
+    data-category: Ideas
+    data-input-position: top
 
 # Chat Services
 # --------------------------------------
