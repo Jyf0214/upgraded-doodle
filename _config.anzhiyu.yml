@@ -376,8 +376,8 @@ artalk:
 # https://giscus.app/
 giscus:
   repo: Jyf0214/upgraded-doodle
-  repo_id: # GitHub repository id
-  category_id: R_kgDONQJ1fQ
+  repo_id: R_kgDONQJ1fQ
+  category_id: DIC_kwDONQJ1fc4CkVp5
   theme:
     light: light
     dark: dark
