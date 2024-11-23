@@ -54,7 +54,7 @@ future: true # 是否发布未来日期的文章
 syntax_highlighter: highlight.js # 使用的代码高亮器
 highlight: # highlight.js 配置
   line_number: true # 是否显示行号
-  auto_detect: false # 是否自动检测代码语言
+  auto_detect: true # 是否自动检测代码语言
   tab_replace: '' # 用空格替代 tab
   wrap: true # 是否自动换行
   hljs: false # 是否启用 highlight.js 风格
