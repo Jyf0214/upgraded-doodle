@@ -1,4 +1,4 @@
-name: Deploy Hexo to GitHub Pages
+name: Deploy Hexo to GitHub Pages and Update gh-pages Branch
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch: # 允许手动触发
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -44,24 +44,31 @@ jobs:
       - name: Generate static files
         run: hexo generate
 
-      # Step 6: 添加 CNAME 文件
+      # Step 5: 添加 CNAME 文件
       - name: Create CNAME file
         run: echo "amiya.giize.com" > public/CNAME
 
-      # Step 7: 上传生成的静态文件作为构建产物
+      # Step 6: 上传生成的静态文件作为工件
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: public # 只上传 Hexo 生成的静态文件
+          path: public # 上传 Hexo 生成的静态文件
 
-      # Step 8: 部署到 GitHub Pages
+      # Step 7: 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public  # 默认构建输出目录
-          cname: amiya.giize.com
+      # Step 8: 推送生成的文件到 gh-pages 分支
+      - name: Push to gh-pages branch
+        if: ${{ success() }} # 确保之前的步骤成功
+        run: |
+          # 克隆 gh-pages 分支到 temp 文件夹
+          git clone --branch=gh-pages --depth=1 https://github.com/${{ github.repository }} temp || mkdir temp
+          cp -r public/* temp/
+          cd temp
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git add .
+          git commit -m "Update gh-pages branch from ${GITHUB_SHA}" || echo "No changes to commit"
+          git push https://github.com/${{ github.repository }} gh-pages
