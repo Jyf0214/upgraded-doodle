@@ -38,7 +38,6 @@ jobs:
       - name: Install Hexo and dependencies
         run: |
           npm install -g hexo-cli
-          npm install hexo-lastmod --save
           npm install hexo-server hexo-browsersync hexo-renderer-pug --save
           npm install
 
