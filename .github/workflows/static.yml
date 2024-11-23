@@ -62,13 +62,15 @@ jobs:
       # Step 8: 推送生成的文件到 gh-pages 分支
       - name: Push to gh-pages branch
         if: ${{ success() }} # 确保之前的步骤成功
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # 克隆 gh-pages 分支到 temp 文件夹
-          git clone --branch=gh-pages --depth=1 https://github.com/${{ github.repository }} temp || mkdir temp
+          git clone --branch=gh-pages --depth=1 https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} temp || mkdir temp
           cp -r public/* temp/
           cd temp
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           git add .
           git commit -m "Update gh-pages branch from ${GITHUB_SHA}" || echo "No changes to commit"
-          git push https://github.com/${{ github.repository }} gh-pages
+          git push origin gh-pages
