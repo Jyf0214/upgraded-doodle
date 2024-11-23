@@ -38,6 +38,7 @@ jobs:
       - name: Install Hexo and dependencies
         run: |
           npm install -g hexo-cli
+          npm install hexo-lastmod --save
           npm install
 
       # Step 4: 生成静态文件
