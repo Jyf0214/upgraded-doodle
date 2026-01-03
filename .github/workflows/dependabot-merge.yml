@@ -1,7 +1,7 @@
-name: Dependabot Auto Merge
+name: Auto Merge (Dependabot & Owner)
 
 on:
-  pull_request_target: # 使用 pull_request_target 以便获得写权限（用于合并）
+  pull_request_target:
     types: [opened, synchronize, reopened]
 
 permissions:
@@ -10,48 +10,44 @@ permissions:
   checks: read          # 读取检查状态
 
 jobs:
-  dependabot-check-and-merge:
+  check-and-merge:
     runs-on: ubuntu-latest
-    # 仅当发起人为 dependabot 时运行
-    if: github.actor == 'dependabot[bot]'
+    # 修改处：判断发起人是 dependabot 或者 Jyf0214
+    if: ${{ github.actor == 'dependabot[bot]' || github.actor == 'Jyf0214' }}
     
     steps:
-      # Step 1: 检出 PR 的代码
-      # 注意：pull_request_target 默认检出目标分支(main)，这里我们需要检出 PR 的源分支来测试构建
+      # Step 1: 检出 PR 的源分支代码
       - name: Checkout PR code
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
-      # Step 2: 设置 Node.js 环境 (保持与 deploy.yml 一致)
+      # Step 2: 设置 Node.js 环境
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      # Step 3: 安装 Hexo 和依赖 (保持与 deploy.yml 一致)
+      # Step 3: 安装 Hexo 和依赖
       - name: Install Hexo and dependencies
         run: |
           npm install -g hexo-cli
           npm install hexo-server hexo-browsersync hexo-renderer-pug --save
           npm install
 
-      # Step 4: 验证本地构建 (核心条件之一：本地构建成功)
+      # Step 4: 验证本地构建 (hexo generate)
       - name: Test Build (Hexo Generate)
         run: hexo generate
 
-      # Step 5: 批准 PR 并启用自动合并 (核心条件之二：Vercel 部署成功)
-      # 原理：我们告诉 GitHub "开启自动合并"，GitHub 会自动等待所有 required checks（包括 Vercel）通过后再合并
-      - name: Enable Auto-merge for Dependabot
-        if: success() # 仅当上面本地构建成功时执行
+      # Step 5: 批准 PR 并启用自动合并
+      - name: Enable Auto-merge
+        if: success() # 仅当本地构建成功时执行
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_URL: ${{ github.event.pull_request.html_url }}
         run: |
-          # 1. 批准 PR (Dependabot 通常需要 Review 才能合并)
-          gh pr review "$PR_URL" --approve --body "Local build passed. Approving for auto-merge."
+          # 尝试批准 PR (如果是 Jyf0214 自己的 PR，这一步可能会提示无法批准自己的 PR，所以加了 || echo 跳过错误)
+          gh pr review "$PR_URL" --approve --body "Automated build check passed. Ready for merge." || echo "Review skipped (possibly same user)"
           
-          # 2. 启用自动合并
-          # --auto: 等待所有状态检查通过后合并
-          # --merge: 使用 Merge commit 方式（也可以选 --squash）
+          # 启用自动合并：等待 Vercel (需在仓库设置里设为 Required) 通过后合并
           gh pr merge "$PR_URL" --auto --merge
