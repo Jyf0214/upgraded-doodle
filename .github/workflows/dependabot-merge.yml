@@ -1,0 +1,57 @@
+name: Dependabot Auto Merge
+
+on:
+  pull_request_target: # 使用 pull_request_target 以便获得写权限（用于合并）
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write       # 允许合并代码
+  pull-requests: write  # 允许批准和评论 PR
+  checks: read          # 读取检查状态
+
+jobs:
+  dependabot-check-and-merge:
+    runs-on: ubuntu-latest
+    # 仅当发起人为 dependabot 时运行
+    if: github.actor == 'dependabot[bot]'
+    
+    steps:
+      # Step 1: 检出 PR 的代码
+      # 注意：pull_request_target 默认检出目标分支(main)，这里我们需要检出 PR 的源分支来测试构建
+      - name: Checkout PR code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      # Step 2: 设置 Node.js 环境 (保持与 deploy.yml 一致)
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      # Step 3: 安装 Hexo 和依赖 (保持与 deploy.yml 一致)
+      - name: Install Hexo and dependencies
+        run: |
+          npm install -g hexo-cli
+          npm install hexo-server hexo-browsersync hexo-renderer-pug --save
+          npm install
+
+      # Step 4: 验证本地构建 (核心条件之一：本地构建成功)
+      - name: Test Build (Hexo Generate)
+        run: hexo generate
+
+      # Step 5: 批准 PR 并启用自动合并 (核心条件之二：Vercel 部署成功)
+      # 原理：我们告诉 GitHub "开启自动合并"，GitHub 会自动等待所有 required checks（包括 Vercel）通过后再合并
+      - name: Enable Auto-merge for Dependabot
+        if: success() # 仅当上面本地构建成功时执行
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: |
+          # 1. 批准 PR (Dependabot 通常需要 Review 才能合并)
+          gh pr review "$PR_URL" --approve --body "Local build passed. Approving for auto-merge."
+          
+          # 2. 启用自动合并
+          # --auto: 等待所有状态检查通过后合并
+          # --merge: 使用 Merge commit 方式（也可以选 --squash）
+          gh pr merge "$PR_URL" --auto --merge
